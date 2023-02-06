@@ -1,4 +1,4 @@
-This repo created to show how a Docker, kubectl server and the kind K8s tool therefore to be able use the K8s locally in our host(Linux) for our small K8s projects.
+This repo created to show and understand how a Docker, kubectl command line tool and the kind (K8s tool) are installed and used. and then to be able to use the K8s locally in our host(Linux) for our small K8s projects.
 
 -- In kind.install.txt we'll see how we can download the Docker from https://docs.docker.com/engine/install/ubuntu/
 This download is created for Ubuntu distrubition. 
