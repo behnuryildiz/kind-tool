@@ -1,0 +1,65 @@
+#to create a kind cluster from an own manifest yaml file
+kind create cluster (--name mycluster) --config file.yaml
+kind delete cluster (--name mycluster)
+
+#to get all created clusters
+kind get clusters
+
+#to see the images in a node
+docker exec -it node_id crictl images
+
+#to get the cluster-log file into the current file
+kind export logs
+
+#switch betw. clusters
+kubectl config use-context kind-kind
+
+kubectl config get-contexts --> to see on which cluster we're
+
+
+kubectl get all (--namespace-all)
+kubectl get pods (-n namespace)
+kubectl describe svc
+kubectl describe deploy
+
+#to get the log file from any pod
+kubectl logs pod-name (--all-containers=true)
+
+
+#too see of a container' environment worths
+kubectl exec pod-name env
+
+
+#to label a pod
+kubectl label pod nginx version=v=2 (--overwrite=true)
+#to dislabel a pod (enough to write just a beginn of label parts like version if this word appers just once)
+kubectl label pod nginx version(=v=2)-
+
+
+X = any number
+#to set rs' number with new one
+kubectl scale deploy/deploy-name replicas=X
+		--> then check if they succesful created and brought in run
+kubectl get pods -w
+kubectl describe deploy  (unter events we'll the the last logs of rs)
+
+
+
+#to rollout an image version
+kubectl set image deploy/deploy-name deploy=deploy-name:vX
+
+#to check the rollout if it was succeeded.
+kubectl rollout status deploy/deploy-name
+
+#to take the rollout back
+kubectl rollout undo deploy/deploy-name 
+
+
+#to control the images' version
+kubectl describe pods
+
+
+#expose a deployment (open to out connectios)
+kubectl expose deploy/deploy-name --port=XX  --target-port=XXXX(the container port to reach)  --type=NodePort
+			--> to get this container port number: kubectl describe deploy 
+			--> look at the image ports
